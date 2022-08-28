@@ -1,0 +1,20 @@
+:root {
+    --text-color: #121212;
+    --background-color: #cacaca;
+    --modal-color: #cacaca;
+    --input-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #eee;
+      --background-color: #121212;
+      --modal-color: #242424;
+      --input-color: #333;
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}

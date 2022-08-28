@@ -1,0 +1,29 @@
+.modal {
+    z-index: 1051;
+    
+    .modal-content {
+        background-color: var(--modal-color);
+        
+        .modal-header, .modal-footer {
+            border: none;
+        }
+        
+        .modal-body {
+            text-align: left;
+        
+            input {
+                background-color: var(--input-color);
+                border: none;
+                color: var(--text-color);
+                
+                &.is-invalid {
+                    border: solid 2px #dc3545
+                }
+            }
+            
+            .invalid-feedback {
+                font-size: 0.9em;
+            }
+        }
+    }
+}

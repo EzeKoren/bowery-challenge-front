@@ -1,0 +1,38 @@
+.employee-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.card {
+    background-color: var(--modal-color);
+    padding: 20px;
+    font-size: 1.1em;
+    margin: 5px;
+    width: 300px;
+    opacity: 0;
+    .name {
+        font-weight: 500;
+        font-size: 2em;
+    }
+    animation: loaded 0.5s ease-out forwards;
+
+    @for $i from 1 to 50{
+        &:nth-child(#{$i}) {
+            animation-delay: 100ms * $i;
+        }
+    }
+}
+
+@keyframes loaded {
+    0% {
+        opacity: 0;
+        transform: translate(0, 5px);
+    }
+    100% {
+        opacity: 100;
+        transform: translate(0, 0);
+    }
+}
