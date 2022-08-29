@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Employee } from 'store/employeesSlice'
 import EmployeeActions from 'actions/employees';
 import './style.scss'
 
 export default function AddEmployeeModal() {
+  const modal = useRef(null)
+
   const addEmployee = (form: React.FormEvent<HTMLFormElement>) => {
     form.stopPropagation()
     form.preventDefault()
@@ -21,6 +23,18 @@ export default function AddEmployeeModal() {
         type: ob[3].value,
       }
       EmployeeActions.createEmployee(employee)
+
+      // @ts-ignore
+      modal.current.classList.remove('show')
+      // @ts-ignore
+      modal.current.setAttribute('aria-hidden', 'true')
+      document.getElementsByClassName('modal-backdrop')[0].classList.remove('show')
+      
+      setTimeout(() => {
+        // @ts-ignore
+        modal.current.setAttribute('style', 'display: none')
+        document.getElementsByClassName('modal-backdrop')[0].remove()
+      }, 500)
     }
     else {
       ob.forEach(i => { i.classList.add(i.checkValidity() ? 'is-valid' : 'is-invalid')})
@@ -30,7 +44,7 @@ export default function AddEmployeeModal() {
   return (
     <>
       <button type="button" className="add btn btn-primary btn-lg align-middle" data-bs-toggle="modal" data-bs-target="#add-employee-modal">Add employee</button>
-      <div className="modal fade" id="add-employee-modal" tabIndex={-1} aria-labelledby="add-employee-modal-label" aria-hidden="true">
+      <div ref={modal} className="modal fade" id="add-employee-modal" tabIndex={-1} aria-labelledby="add-employee-modal-label" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -62,7 +76,7 @@ export default function AddEmployeeModal() {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" form="add-employee-form" value="Submit" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button type="submit" form="add-employee-form" value="Submit" className="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>
