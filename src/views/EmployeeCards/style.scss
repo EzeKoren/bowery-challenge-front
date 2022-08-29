@@ -13,6 +13,14 @@
     margin: 5px;
     width: 300px;
     opacity: 0;
+
+    .detailed {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 5%;
+    }
+
     .name {
         font-weight: 500;
         font-size: 2em;
