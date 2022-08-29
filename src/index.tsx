@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from 'views/App';
 import reportWebVitals from 'reportWebVitals';
+import EmployeeActions from 'actions/employees'
 import store from 'store';
 import './style.scss'
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
+EmployeeActions.fetch()
 
 root.render(
   <React.StrictMode>

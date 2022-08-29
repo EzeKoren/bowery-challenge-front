@@ -15,7 +15,6 @@ export const employeesSlice = createSlice({
     initialState: {} as EmployeeMap,
     reducers: {
         edit: (state: EmployeeMap, action) => {
-            console.log({state, action})
             switch (action.payload.type) {
                 case "ADD":
                     if (Array.isArray(action.payload.payload)) {
