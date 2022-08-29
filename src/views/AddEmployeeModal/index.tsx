@@ -62,7 +62,7 @@ export default function AddEmployeeModal() {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" form="add-employee-form" value="Submit" className="btn btn-primary">Submit</button>
+              <button type="submit" form="add-employee-form" value="Submit" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
