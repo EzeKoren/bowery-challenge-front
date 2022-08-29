@@ -1,24 +1,29 @@
 import React, { useState } from 'react'
 import store from 'store'
 import EmployeeActions from 'actions/employees'
-import { Employee } from 'store/employeesSlice'
+import { EmployeeMap } from 'store/employeesSlice'
 import Card from './Card'
 
 import './style.scss'
 
 export default function EmployeeCards() {
-  const [employees, setEmployees] = useState([] as Employee[])
+  const [employeeCards, setEmployeeCards] = useState([] as JSX.Element[])
 
   EmployeeActions.fetch()
 
   store.subscribe(() => {
-    console.log(store.getState())
-    setEmployees(store.getState().employees)
+    console.log(store.getState().employees)
+    let cards: JSX.Element[] = []
+    for (const id in store.getState().employees) {
+      cards.push(<Card key={id} employee={store.getState().employees[id]}/>)
+      
+    }
+    setEmployeeCards(cards)
   })
 
   return (
-    <div className='employee-container'>{employees.map(
-      e => <Card key={e._id} employee={e}/>
-    )}</div>
+    <div className='employee-container'>
+      {employeeCards}
+    </div>
   )
 }
